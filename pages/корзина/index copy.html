@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Корзина</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <style>
+        .cart-count {
+    background-color: #1a73e8;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+
+  main {
+    padding: 30px 0;
+  }
+
+  .cart-page {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .cart-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 100px;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .cart-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .cart-item-details h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .cart-item-weight, .cart-item-article {
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .cart-item-params {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .cart-item-price {
+    font-weight: 600;
+    font-size: 18px;
+    color: #1a73e8;
+    align-self: center;
+    justify-self: end;
+  }
+
+  .cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .quantity-btn {
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    padding: 0 10px;
+  }
+
+  .quantity-input {
+    width: 40px;
+    height: 36px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .cart-item-total {
+    font-weight: 600;
+    font-size: 18px;
+    color: #1a73e8;
+    margin-left: 10px;
+  }
+
+  .cart-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+
+  .clear-cart {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .clear-cart:hover {
+    color: #333;
+  }
+
+  .cart-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a73e8;
+  }
+
+  footer {
+    background-color: #fff;
+    padding: 40px 0 20px;
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .footer-column {
+    flex: 1;
+    padding: 0 15px;
+  }
+
+  .footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .footer-column p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 15px;
+  }
+
+  .social-links a {
+    color: #1a73e8;
+    font-size: 20px;
+  }
+
+  .social-links a:hover {
+    color: #0d47a1;
+  }
+
+  .footer-column ul {
+    list-style: none;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 10px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #888;
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav-buttons {
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .cart-item {
+      grid-template-columns: 1fr;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cart-item-image {
+      justify-self: center;
+    }
+
+    .cart-item-price {
+      justify-self: center;
+    }
+
+    .footer-content {
+      flex-direction: column;
+    }
+
+    .footer-column {
+      margin-bottom: 30px;
+    }
+  }
+</style>
+    </style>
+    <header>
+      <div class="container header-content">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="logo">
+          <i class="fas fa-fish"></i>
+          Рыбный Базар
+        </div>
+
+        <div class="nav-buttons" id="navButtons">
+          <a href="../../index.html" class="nav-btn">
+            <i class="fas fa-home"></i> Главная
+          </a>
+          <a href="../Рецепты/index.html" class="nav-btn">
+            <i class="fas fa-book"></i> Рецепты
+          </a>
+          <a href="index.html" class="nav-btn cart-btn">
+            <i class="fas fa-shopping-cart"></i> Корзина
+            <span class="cart-count">0</span>
+          </a>
+          <a href="../профиль/index.html" class="nav-btn"
+            ><i class="fas fa-user"></i>Профиль</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <i class="fas fa-fish"></i>
+          Рыбный Базар
+        </div>
+        <button class="mobile-menu-close" id="mobileMenuClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-menu-links">
+        <a href="../../index.html" class="mobile-menu-link">
+          <i class="fas fa-home"></i> Главная
+        </a>
+        <a href="../Рецепты/index.html" class="mobile-menu-link">
+          <i class="fas fa-book"></i> Рецепты
+        </a>
+        <a href="index.html" class="mobile-menu-link mobile-menu-cart">
+          <i class="fas fa-shopping-cart"></i> Корзина
+          <span class="cart-count">0</span>
+        </a>
+        <a href="../профиль/index.html" class="mobile-menu-link"
+          ><i class="fas fa-user"></i>Профиль</a
+        >
+      </div>
+    </div>
+
+    <main class="cart-page">
+      <div class="container">
+        <div id="cart-content">
+          <div class="cart-item">
+            <img
+              src="https://via.placeholder.com/120"
+              alt="Кальмар в чесночном масле"
+              class="cart-item-image"
+            />
+            <div class="cart-item-details">
+              <h3 class="cart-item-title">Кальмар в чесночном масле</h3>
+              <div class="cart-item-weight">Вес: 500 грамм</div>
+              <div class="cart-item-article">Артикул: SP37</div>
+              <div class="cart-item-params">Параметры</div>
+              <div class="cart-item-actions">
+                <div class="quantity-control">
+                  <button class="quantity-btn minus-btn">-</button>
+                  <input type="text" value="1" class="quantity-input" />
+                  <button class="quantity-btn plus-btn">+</button>
+                </div>
+                <div class="cart-item-total">494 ₽</div>
+              </div>
+            </div>
+            <div class="cart-item-price">494 ₽</div>
+          </div>
+
+          <div class="cart-summary">
+            <div>
+              <button class="clear-cart">
+                <i class="fas fa-trash"></i> Очистить корзину
+              </button>
+            </div>
+            <div class="cart-total">Итого: 494 ₽</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Рыбный Базар</h3>
+            <p>
+              Свежая рыба и морепродукты с доставкой на дом. Гарантия качества и
+              свежести!
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Контакты</h3>
+            <ul>
+              <li><i class="fas fa-map-marker-alt"></i> г.Барнаул</li>
+              <li><i class="fas fa-phone"></i> +7 (999) 123-45-67</li>
+              <li><i class="fas fa-envelope"></i> info@rybnybazar.ru</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2025 Рыбный Базар. Все права защищены.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const minusBtn = document.querySelector(".minus-btn");
+        const plusBtn = document.querySelector(".plus-btn");
+        const quantityInput = document.querySelector(".quantity-input");
+        const cartCount = document.querySelector(".cart-count");
+
+        minusBtn.addEventListener("click", function () {
+          let value = parseInt(quantityInput.value);
+          if (value > 1) {
+            value--;
+            quantityInput.value = value;
+            cartCount.textContent = value;
+            updateTotal();
+          }
+        });
+
+        plusBtn.addEventListener("click", function () {
+          let value = parseInt(quantityInput.value);
+          value++;
+          quantityInput.value = value;
+          cartCount.textContent = value;
+          updateTotal();
+        });
+
+        function updateTotal() {
+          const price = 494;
+          const quantity = parseInt(quantityInput.value);
+          const totalElement = document.querySelector(".cart-total");
+          totalElement.textContent = `Итого: ${price * quantity} ₽`;
+        }
+      });
+    </script>
+  </body>
+</html>

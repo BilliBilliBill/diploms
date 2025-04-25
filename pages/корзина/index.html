@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Корзина</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="logo">
+          <i class="fas fa-fish"></i>
+          Рыбный Базар
+        </div>
+
+        <div class="nav-buttons" id="navButtons">
+          <a href="../../index.html" class="nav-btn">
+            <i class="fas fa-home"></i> Главная
+          </a>
+          <a href="../Рецепты/index.html" class="nav-btn">
+            <i class="fas fa-book"></i> Рецепты
+          </a>
+          <a href="index.html" class="nav-btn cart-btn">
+            <i class="fas fa-shopping-cart"></i> Корзина
+            <span class="cart-count">0</span>
+          </a>
+          <a href="../../login.html" class="nav-btn"
+            ><i class="fas fa-user"></i>Профиль</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <i class="fas fa-fish"></i>
+          Рыбный Базар
+        </div>
+        <button class="mobile-menu-close" id="mobileMenuClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-menu-links">
+        <a href="../../index.html" class="mobile-menu-link">
+          <i class="fas fa-home"></i> Главная
+        </a>
+        <a href="../Рецепты/index.html" class="mobile-menu-link">
+          <i class="fas fa-book"></i> Рецепты
+        </a>
+        <a href="index.html" class="mobile-menu-link mobile-menu-cart">
+          <i class="fas fa-shopping-cart"></i> Корзина
+          <span class="cart-count">0</span>
+        </a>
+        <a href="../../login.html" class="mobile-menu-link"
+          ><i class="fas fa-user"></i>Профиль</a
+        >
+      </div>
+    </div>
+
+    <main class="cart-page">
+      <div class="container">
+        <div id="cart-content">
+          <div class="empty-cart">
+            <div class="empty-cart-icon">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+            <h2 class="empty-cart-text">Ваша корзина пуста</h2>
+            <p>Выберите понравившиеся товары и добавьте их в корзину</p>
+            <button class="continue-shopping-btn">Продолжить покупки</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Рыбный Базар</h3>
+            <p>
+              Свежая рыба и морепродукты с доставкой на дом. Гарантия качества и
+              свежести!
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Контакты</h3>
+            <ul>
+              <li><i class="fas fa-map-marker-alt"></i> г.Барнаул</li>
+              <li><i class="fas fa-phone"></i> +7 (999) 123-45-67</li>
+              <li><i class="fas fa-envelope"></i> info@rybnybazar.ru</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2025 Рыбный Базар. Все права защищены.
+        </div>
+      </div>
+    </footer>
+    <script src="../../index.js"></script>
+  </body>
+</html>

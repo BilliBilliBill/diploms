@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Админ-панель - Рыбный Базар</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h2><i class="fas fa-fish"></i> Рыбный Базар</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="index.html" class="active"
+              ><i class="fas fa-tachometer-alt"></i> Панель управления</a
+            >
+          </li>
+          <li>
+            <a href="orders.html"><i class="fas fa-list"></i> Заказы</a>
+          </li>
+          <li>
+            <a href="add-item.html"
+              ><i class="fas fa-plus"></i> Добавить товар</a
+            >
+          </li>
+          <li>
+            <a href="items-list.html"
+              ><i class="fas fa-box"></i> Список товаров</a
+            >
+          </li>
+
+          <li>
+            <a href="loh.html"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="form-card" style="margin-top: 20px">
+          <h2>Товары на складах</h2>
+
+          <!-- Категории -->
+          <div style="margin-bottom: 15px">
+            <div style="display: flex; gap: 10px">
+              <div class="filter-card" id="all-items">
+                <span>Все товары</span>
+              </div>
+              <div class="filter-card" id="low-stock">
+                <span>Свежая рыба</span>
+              </div>
+              <div class="filter-card" id="high-stock">
+                <span>Морепродукты</span>
+              </div>
+              <div class="filter-card" id="high-stock">
+                <span>Копчености</span>
+              </div>
+              <div class="filter-card" id="high-stock">
+                <span>Замороженое</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 15px">
+            <div style="display: flex; gap: 10px">
+              <div class="filter-card active" id="all-items">
+                <div
+                  class="filter-color"
+                  style="background-color: #3498db"
+                ></div>
+                <span>Все товары</span>
+              </div>
+              <div class="filter-card" id="low-stock">
+                <div
+                  class="filter-color"
+                  style="background-color: #e74c3c"
+                ></div>
+                <span>Скоро закончится</span>
+              </div>
+              <div class="filter-card" id="high-stock">
+                <div
+                  class="filter-color"
+                  style="background-color: #2ecc71"
+                ></div>
+                <span>Достаточно</span>
+              </div>
+            </div>
+          </div>
+
+          <table
+            style="width: 100%; margin-top: 15px; border-collapse: collapse"
+          >
+            <thead>
+              <tr>
+                <th
+                  style="
+                    text-align: left;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Наименование товара
+                </th>
+                <th
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Остаток
+                </th>
+                <th
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Затраты с заказов
+                </th>
+                <th
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Категория
+                </th>
+                <th
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Статус
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd">
+                  Семга филе
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  120 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  45 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Свежая рыба
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Достаточно
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd">
+                  Креветки черные сырые
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  85 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  22 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Морепродукты
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Достаточно
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd">
+                  Кальмары
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  60 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  15 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Морепродукты
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Достаточно
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd">
+                  Скумбрия
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  100 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  38 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Свежая рыба
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Достаточно
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd">
+                  Мидии
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  40 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  12 кг
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Морепродукты
+                </td>
+                <td
+                  style="
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                  "
+                >
+                  Скоро закончится
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Логика для категорий
+      const categoryBtns = document.querySelectorAll(".category-btn");
+      const tableRows = document.querySelectorAll("tbody tr");
+
+      categoryBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Сброс активного класса у всех кнопок
+          categoryBtns.forEach((b) => b.classList.remove("active"));
+          // Добавление активного класса к нажатой кнопке
+          btn.classList.add("active");
+
+          const category = btn.textContent;
+
+          tableRows.forEach((row) => {
+            const itemCategory = row.cells[3].textContent;
+
+            if (category === "Все товары" || itemCategory === category) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Логика для фильтра остатков
+      const filterCards = document.querySelectorAll(".filter-card");
+
+      filterCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          // Сброс активного класса у всех карт
+          filterCards.forEach((c) => c.classList.remove("active"));
+          // Добавление активного класса к нажатой карте
+          card.classList.add("active");
+
+          const filterId = card.id;
+
+          tableRows.forEach((row) => {
+            const itemStatus = row.cells[4].textContent;
+            const stockValue = parseInt(row.cells[1].textContent);
+
+            if (filterId === "all-items") {
+              row.style.display = "";
+            } else if (
+              filterId === "low-stock" &&
+              (itemStatus === "Скоро закончится" || stockValue < 50)
+            ) {
+              row.style.display = "";
+            } else if (
+              filterId === "high-stock" &&
+              itemStatus === "Достаточно"
+            ) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+
+    <style>
+      .filter-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid #ddd;
+      }
+
+      .filter-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .filter-card.active {
+        border: 1px solid #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+      }
+
+      .filter-color {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+      }
+    </style>
+    <script src="../index.js"></script>
+  </body>
+</html>

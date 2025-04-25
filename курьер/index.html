@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Курьер</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Сброс стилей */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Шапка */
+      header {
+        background-color: #006685;
+        color: #fff;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
+        color: #ff9800;
+      }
+
+      /* Кнопки */
+      .cta-btn {
+        background-color: #ff9800;
+        color: #fff;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      .cta-btn:hover {
+        background-color: #e68a00;
+      }
+
+      .profile-section,
+      .map-container,
+      .orders-container {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .section-title {
+        color: #006685;
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      /* Карта */
+      .map {
+        height: 250px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Заказы */
+      .order-item {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .order-item:last-child {
+        border-bottom: none;
+      }
+
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .order-id {
+        font-weight: 500;
+        color: #2c3e50;
+      }
+
+      .order-status {
+        font-size: 14px;
+        color: #ff9800;
+      }
+
+      .order-details {
+        margin-bottom: 10px;
+      }
+
+      .delivery-address,
+      .delivery-weight {
+        color: #555;
+        margin-bottom: 5px;
+      }
+
+      /* Модальное окно */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 50px 15px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #aaa;
+      }
+
+      /* Фото-загрузчик */
+      .photo-upload {
+        width: 100%;
+        padding: 12px;
+        border: 2px dashed #ddd;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.3s;
+        margin-top: 15px;
+      }
+
+      .photo-upload:hover {
+        border-color: #006685;
+      }
+
+      /* Страница профиля */
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .info-label {
+        font-weight: 500;
+        color: #2c3e50;
+      }
+
+      .info-value {
+        color: #333;
+      }
+
+      .edit-link {
+        color: #ff9800;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      /* Страница карты */
+      .current-location {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+      .current-location i {
+        margin-right: 10px;
+        color: #006685;
+      }
+
+      /* Страница заказов */
+      .order-card {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .order-total {
+        font-weight: 500;
+        color: #2c3e50;
+        margin: 10px 0;
+      }
+
+      /* Навигация */
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #555;
+      }
+
+      .nav-item.active {
+        color: #006685;
+      }
+
+      .nav-item i {
+        margin-bottom: 5px;
+        font-size: 20px;
+      }
+
+      /* Скрытие страниц */
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-motorcycle"></i>
+          <span>Курьер</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Главная страница (Панель курьера) -->
+    <div class="page active" id="homePage">
+      <div class="container">
+        <div class="map-container">
+          <h2 class="section-title">Текущий маршрут</h2>
+          <div class="map" id="map">
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+              "
+            >
+              <i
+                class="fas fa-map-marked-alt"
+                style="font-size: 48px; color: #006685"
+              ></i>
+              <p>Карта загрузится здесь</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="orders-container">
+          <h2 class="section-title">Новые заказы</h2>
+
+          <div class="order-item">
+            <div class="order-header">
+              <span class="order-id">#12345</span>
+              <span class="order-status">Новый заказ</span>
+            </div>
+            <div class="order-details">
+              <strong>Адрес доставки:</strong>
+              <div class="delivery-address">ул. Ленина, 15, кв. 3</div>
+              <strong>Вес:</strong>
+              <div class="delivery-weight">2.5 кг</div>
+            </div>
+            <button
+              class="cta-btn"
+              onclick="openPage('orderPage', {id: 12345, address: 'ул. Ленина, 15, кв. 3', weight: '2.5 кг'})"
+            >
+              Принять заказ
+            </button>
+          </div>
+
+          <div class="order-item">
+            <div class="order-header">
+              <span class="order-id">#12346</span>
+              <span class="order-status">Новый заказ</span>
+            </div>
+            <div class="order-details">
+              <strong>Адрес доставки:</strong>
+              <div class="delivery-address">пр-т Победы, 42, оф. 7</div>
+              <strong>Вес:</strong>
+              <div class="delivery-weight">1.8 кг</div>
+            </div>
+            <button
+              class="cta-btn"
+              onclick="openPage('orderPage', {id: 12346, address: 'пр-т Победы, 42, оф. 7', weight: '1.8 кг'})"
+            >
+              Принять заказ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Страница профиля -->
+    <div class="page" id="profilePage">
+      <div class="container">
+        <div class="profile-section">
+          <h2 class="section-title">Профиль</h2>
+          <div class="info-row">
+            <span class="info-label">Имя:</span>
+            <span class="info-value">Иван Петров</span>
+            <a href="#" class="edit-link">Изменить</a>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Телефон:</span>
+            <span class="info-value">+7 (999) 123-45-67</span>
+            <a href="#" class="edit-link">Изменить</a>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Баланс:</span>
+            <span class="info-value">2 500 ₽</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Выполнено заказов:</span>
+            <span class="info-value">125</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Среднее время доставки:</span>
+            <span class="info-value">35 минут</span>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h2 class="section-title">История заказов</h2>
+          <div class="order-card">
+            <div class="order-header">
+              <span class="order-id">#12344</span>
+              <span class="order-status">Завершен</span>
+            </div>
+            <div class="delivery-address">ул. Советская, 22</div>
+            <div class="order-total">Сумма: 500 ₽</div>
+          </div>
+          <div class="order-card">
+            <div class="order-header">
+              <span class="order-id">#12343</span>
+              <span class="order-status">Завершен</span>
+            </div>
+            <div class="delivery-address">пр-т Калинина, 8</div>
+            <div class="order-total">Сумма: 450 ₽</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Страница карты -->
+    <div class="page" id="mapPage">
+      <div class="container">
+        <div class="current-location">
+          <i class="fas fa-location-arrow"></i>
+          <h2 class="section-title">Текущее местоположение</h2>
+        </div>
+        <div class="map" id="map">
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              text-align: center;
+            "
+          >
+            <i
+              class="fas fa-map-marked-alt"
+              style="font-size: 48px; color: #006685"
+            ></i>
+            <p>Карта загрузится здесь</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Страница заказов -->
+    <div class="page" id="ordersPage">
+      <div class="container">
+        <div class="profile-section">
+          <h2 class="section-title">Активные заказы</h2>
+
+          <div class="order-item">
+            <div class="order-header">
+              <span class="order-id">#12345</span>
+              <span class="order-status">Новый заказ</span>
+            </div>
+            <div class="order-details">
+              <strong>Адрес доставки:</strong>
+              <div class="delivery-address">ул. Ленина, 15, кв. 3</div>
+              <strong>Вес:</strong>
+              <div class="delivery-weight">2.5 кг</div>
+            </div>
+            <button
+              class="cta-btn"
+              onclick="openPage('orderPage', {id: 12345, address: 'ул. Ленина, 15, кв. 3', weight: '2.5 кг'})"
+            >
+              Доставлен
+            </button>
+          </div>
+
+          <div class="order-item">
+            <div class="order-header">
+              <span class="order-id">#12346</span>
+              <span class="order-status">Новый заказ</span>
+            </div>
+            <div class="order-details">
+              <strong>Адрес доставки:</strong>
+              <div class="delivery-address">пр-т Победы, 42, оф. 7</div>
+              <strong>Вес:</strong>
+              <div class="delivery-weight">1.8 кг</div>
+            </div>
+            <button
+              class="cta-btn"
+              onclick="openPage('orderPage', {id: 12346, address: 'пр-т Победы, 42, оф. 7', weight: '1.8 кг'})"
+            >
+              Доставлен
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Страница подробностей заказа -->
+    <div class="page" id="orderPage">
+      <div class="container">
+        <div class="profile-section">
+          <h2 class="section-title">
+            Заказ <span id="orderPageId">#12345</span>
+          </h2>
+          <div class="order-details">
+            <strong>Адрес доставки:</strong>
+            <div class="delivery-address" id="orderPageAddress">
+              ул. Ленина, 15, кв. 3
+            </div>
+            <strong>Вес:</strong>
+            <div class="delivery-weight" id="orderPageWeight">2.5 кг</div>
+          </div>
+        </div>
+        <div class="profile-section">
+          <h2 class="section-title">Подтверждение доставки</h2>
+          <p>Пожалуйста, сделайте фото для подтверждения доставки:</p>
+
+          <div class="order-photo">
+            <div class="photo-upload" onclick="triggerPhotoUpload()">
+              <i
+                class="fas fa-camera"
+                style="font-size: 36px; color: #006685"
+              ></i>
+              <p>Сделать фотографию</p>
+              <input
+                type="file"
+                id="photoInput"
+                style="display: none"
+                accept="image/*"
+              />
+            </div>
+            <div id="photoPreview" style="margin-top: 15px; display: none">
+              <img
+                id="previewImage"
+                style="max-width: 100%; max-height: 200px; border-radius: 4px"
+              />
+            </div>
+          </div>
+
+          <button
+            class="cta-btn"
+            onclick="confirmOrder()"
+            style="margin-top: 20px"
+          >
+            Подтвердить доставку
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Навигация -->
+    <div class="bottom-nav">
+      <a href="#" class="nav-item active" onclick="openPage('homePage')">
+        <i class="fas fa-home"></i>
+        <span>Главная</span>
+      </a>
+      <a href="#" class="nav-item" onclick="openPage('profilePage')">
+        <i class="fas fa-user"></i>
+        <span>Профиль</span>
+      </a>
+      <a href="#" class="nav-item" onclick="openPage('mapPage')">
+        <i class="fas fa-map-marked-alt"></i>
+        <span>Карта</span>
+      </a>
+      <a href="#" class="nav-item" onclick="openPage('ordersPage')">
+        <i class="fas fa-clipboard-list"></i>
+        <span>Заказы</span>
+      </a>
+    </div>
+
+    <script>
+      // Переключение страниц
+      function openPage(pageId, data = null) {
+        // Скрываем все страницы
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // Показываем выбранную страницу
+        document.getElementById(pageId).classList.add("active");
+
+        // Обновляем активную кнопку в навигации
+        if (pageId !== "orderPage") {
+          document.querySelectorAll(".nav-item").forEach((item) => {
+            item.classList.remove("active");
+          });
+          document
+            .querySelector(`.nav-item[onclick="openPage('${pageId}')"]`)
+            .classList.add("active");
+        }
+
+        // Обновляем данные на странице заказа, если переданы
+        if (data && pageId === "orderPage") {
+          document.getElementById("orderPageId").textContent = "#" + data.id;
+          document.getElementById("orderPageAddress").textContent =
+            data.address;
+          document.getElementById("orderPageWeight").textContent =
+            data.weight + " кг";
+        }
+      }
+
+      // Триггер для выбора файла
+      function triggerPhotoUpload() {
+        document.getElementById("photoInput").click();
+      }
+
+      // Просмотр выбранного фото
+      document
+        .getElementById("photoInput")
+        .addEventListener("change", function (e) {
+          if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              document.getElementById("previewImage").src = event.target.result;
+              document.getElementById("photoPreview").style.display = "block";
+            };
+            reader.readAsDataURL(e.target.files[0]);
+          }
+        });
+
+      // Подтверждение заказа
+      function confirmOrder() {
+        const photoInput = document.getElementById("photoInput");
+        if (!photoInput.files || !photoInput.files[0]) {
+          alert("Пожалуйста, сделайте фотографию для подтверждения");
+          return;
+        }
+
+        // Здесь можно добавить логику отправки данных на сервер
+        alert("Доставка успешно подтверждена!");
+        openPage("homePage");
+      }
+
+      // Инициализация
+      document.addEventListener("DOMContentLoaded", function () {
+        // Устанавливаем текущее местоположение
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            console.log("Текущее местоположение:", position);
+            // Здесь можно добавить код для обновления карты с реальным местоположением
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация - Рыбный Базар</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .login-container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .login-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .login-header h2 {
+        color: #006685;
+      }
+
+      .login-header i {
+        color: #ff9800;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #006685;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      .btn:hover {
+        background-color: #005573;
+      }
+
+      .login-footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+      }
+
+      .error-message {
+        color: #ff3333;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-header">
+        <i class="fas fa-fish"></i>
+        <h2>Рыбный Базар</h2>
+        <p>Зарегистрируйтесь</p>
+      </div>
+      <form id="register-form">
+        <div class="form-group">
+          <label for="username">Логин</label>
+          <input type="text" id="username" class="form-control" required />
+          <div class="error-message" id="username-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">Электронная почта</label>
+          <input type="email" id="email" class="form-control" required />
+          <div class="error-message" id="email-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" class="form-control" required />
+          <div class="error-message" id="password-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Подтвердите пароль</label>
+          <input
+            type="password"
+            id="confirm-password"
+            class="form-control"
+            required
+          />
+          <div class="error-message" id="confirm-password-error"></div>
+        </div>
+        <button type="submit" class="btn">Зарегистрироваться</button>
+        <p style="text-align: center; margin-top: 20px">
+          Уже есть аккаунт?
+          <a href="login copy.html" style="color: #006685">Войдите</a>
+        </p>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("register-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Очистка всех ошибок
+          document.querySelectorAll(".error-message").forEach((el) => {
+            el.style.display = "none";
+          });
+
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirm-password").value;
+          let hasError = false;
+
+          // Валидация имени пользователя
+          if (username.length < 3) {
+            document.getElementById("username-error").textContent =
+              "Логин должен быть не меньше 3 символов";
+            document.getElementById("username-error").style.display = "block";
+            hasError = true;
+          }
+
+          // Валидация электронной почты
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(email)) {
+            document.getElementById("email-error").textContent =
+              "Введите действительный адрес электронной почты";
+            document.getElementById("email-error").style.display = "block";
+            hasError = true;
+          }
+
+          // Валидация пароля
+          if (password.length < 6) {
+            document.getElementById("password-error").textContent =
+              "Пароль должен быть не меньше 6 символов";
+            document.getElementById("password-error").style.display = "block";
+            hasError = true;
+          }
+
+          // Валидация подтверждения пароля
+          if (password !== confirmPassword) {
+            document.getElementById("confirm-password-error").textContent =
+              "Пароли не совпадают";
+            document.getElementById("confirm-password-error").style.display =
+              "block";
+            hasError = true;
+          }
+
+          if (!hasError) {
+            // Здесь должна быть отправка данных на сервер
+            // В реальном приложении это делается через AJAX-запрос
+
+            // Поскольку это пример, просто перенаправляем на главную страницу
+            alert("Регистрация успешна!");
+            window.location.href = "index.html";
+          }
+        });
+    </script>
+  </body>
+</html>

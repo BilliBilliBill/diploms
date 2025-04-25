@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Рыбные рецепты</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="logo">
+          <i class="fas fa-fish"></i>
+          Рыбный Базар
+        </div>
+
+        <div class="nav-buttons" id="navButtons">
+          <a href="../../index.html" class="nav-btn">
+            <i class="fas fa-home"></i> Главная
+          </a>
+          <a href="index.html" class="nav-btn">
+            <i class="fas fa-book"></i> Рецепты
+          </a>
+          <a href="../корзина/index.html" class="nav-btn cart-btn">
+            <i class="fas fa-shopping-cart"></i> Корзина
+            <span class="cart-count">0</span>
+          </a>
+          <a href="../../login.html" class="nav-btn"
+            ><i class="fas fa-user"></i>Профиль</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <i class="fas fa-fish"></i>
+          Рыбный Базар
+        </div>
+        <button class="mobile-menu-close" id="mobileMenuClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-menu-links">
+        <a href="../../index.html" class="mobile-menu-link">
+          <i class="fas fa-home"></i> Главная
+        </a>
+        <a href="index.html" class="mobile-menu-link">
+          <i class="fas fa-book"></i> Рецепты
+        </a>
+        <a
+          href="../корзина/index.html"
+          class="mobile-menu-link mobile-menu-cart"
+        >
+          <i class="fas fa-shopping-cart"></i> Корзина
+          <span class="cart-count">0</span>
+        </a>
+        <a href="../../login.html" class="mobile-menu-link"
+          ><i class="fas fa-user"></i>Профиль</a
+        >
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Вдохновение для ваших блюд</h1>
+        <p>
+          Откройте новые рецепты с нашей свежей рыбой и морепродуктами. Мы
+          поможем вам создать настоящие кулинарные шедевры!
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="recipes">
+        <h2 class="section-title">Популярные рецепты</h2>
+
+        <div class="recipe-filters">
+          <button class="filter-btn active">Все рецепты</button>
+          <button class="filter-btn">Рыбные блюда</button>
+          <button class="filter-btn">Морепродукты</button>
+          <button class="filter-btn">Закуски</button>
+          <button class="filter-btn">Основные блюда</button>
+        </div>
+
+        <div class="recipe-cards">
+          <div class="recipe-card">
+            <div class="recipe-img">
+              <img
+                src="../../images/0190eadf-9611-729e-b38c-e23cd7c57adc.png"
+                alt="Запеченный лосось с овощами"
+              />
+            </div>
+            <div class="recipe-content">
+              <h3 class="recipe-title">Запеченный лосось с овощами</h3>
+              <div class="recipe-meta">
+                <span><i class="far fa-clock"></i> 45 минут</span>
+                <span><i class="fas fa-fire"></i> 320 ккал</span>
+              </div>
+              <p class="recipe-desc">
+                Нежный лосось, запеченный с овощами и травами. Идеальное блюдо
+                для семейного ужина.
+              </p>
+
+              <div class="ingredients">
+                <h4>Ингредиенты:</h4>
+                <ul class="ingredients-list">
+                  <li>Филе лосося (наш продукт) - 500 г</li>
+                  <li>Свежие овощи - по вкусу</li>
+                  <li>Оливковое масло - 2 ст.л.</li>
+                  <li>Чеснок - 2 зубчика</li>
+                  <li>Свежие травы - по вкусу</li>
+                </ul>
+              </div>
+
+              <div class="recipe-steps">
+                <h4>Приготовление:</h4>
+                <ol>
+                  <li>Нагрейте духовку до 180°C</li>
+                  <li>
+                    Филе лосося натрите оливковым маслом, чесноком и травами
+                  </li>
+                  <li>Выложите рыбу на противень с овощами</li>
+                  <li>Запекайте 20-25 минут до готовности</li>
+                </ol>
+              </div>
+
+              <div class="recipe-product">
+                <h4>Товар нашего магазина</h4>
+                <p>Филе лосося</p>
+                <div class="product-actions">
+                  <button class="add-to-cart-btn">
+                    <i class="fas fa-shopping-cart"></i> Добавить
+                  </button>
+                  <div class="counter-container" style="display: none">
+                    <button class="counter-btn minus-btn">-</button>
+                    <input
+                      type="number"
+                      class="quantity-input"
+                      value="1"
+                      min="1"
+                      max="99"
+                    />
+                    <button class="counter-btn plus-btn">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recipe-card">
+            <div class="recipe-img">
+              <img src="../../images/crop__4_8.jpg" alt="Креветочный салат" />
+            </div>
+            <div class="recipe-content">
+              <h3 class="recipe-title">Креветочный салат</h3>
+              <div class="recipe-meta">
+                <span><i class="far fa-clock"></i> 30 минут</span>
+                <span><i class="fas fa-fire"></i> 280 ккал</span>
+              </div>
+              <p class="recipe-desc">
+                Свежий и легкий салат с креветками, авокадо и цитрусами.
+                Идеально для летнего обеда.
+              </p>
+
+              <div class="ingredients">
+                <h4>Ингредиенты:</h4>
+                <ul class="ingredients-list">
+                  <li>Креветки (наш продукт) - 300 г</li>
+                  <li>Авокадо - 1 шт.</li>
+                  <li>Огурец - 1 шт.</li>
+                  <li>Помидоры черри - 100 г</li>
+                  <li>Лимон - 1 шт.</li>
+                  <li>Оливковое масло - 2 ст.л.</li>
+                </ul>
+              </div>
+
+              <div class="recipe-steps">
+                <h4>Приготовление:</h4>
+                <ol>
+                  <li>Отварите креветки в подсоленной воде 3-4 минуты</li>
+                  <li>Охладите и очистите</li>
+                  <li>Нарежьте авокадо, огурец и помидоры</li>
+                  <li>Смешайте все ингредиенты</li>
+                  <li>Полейте смесью оливкового масла и лимонного сока</li>
+                </ol>
+              </div>
+
+              <div class="recipe-product">
+                <h4>Товар нашего магазина</h4>
+                <p>Креветки тигровые</p>
+                <div class="product-actions">
+                  <button class="add-to-cart-btn">
+                    <i class="fas fa-shopping-cart"></i> Добавить
+                  </button>
+                  <div class="counter-container" style="display: none">
+                    <button class="counter-btn minus-btn">-</button>
+                    <input
+                      type="number"
+                      class="quantity-input"
+                      value="1"
+                      min="1"
+                      max="99"
+                    />
+                    <button class="counter-btn plus-btn">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recipe-card">
+            <div class="recipe-img">
+              <img
+                src="../../images/scale_1200.jpg"
+                alt="Форель в сливочном соусе"
+              />
+            </div>
+            <div class="recipe-content">
+              <h3 class="recipe-title">Форель в сливочном соусе</h3>
+              <div class="recipe-meta">
+                <span><i class="far fa-clock"></i> 35 минут</span>
+                <span><i class="fas fa-fire"></i> 420 ккал</span>
+              </div>
+              <p class="recipe-desc">
+                Нежная форель в ароматном сливочном соусе с белым вином.
+                Романтическое блюдо для ужина.
+              </p>
+
+              <div class="ingredients">
+                <h4>Ингредиенты:</h4>
+                <ul class="ingredients-list">
+                  <li>Форель (наш продукт) - 600 г</li>
+                  <li>Сливки 33% - 200 мл</li>
+                  <li>Белое вино - 100 мл</li>
+                  <li>Чеснок - 3 зубчика</li>
+                  <li>Лимон - 1 шт</li>
+                  <li>Петрушка - 1 пучок</li>
+                  <li>Соль и перец - по вкусу</li>
+                </ul>
+              </div>
+
+              <div class="recipe-steps">
+                <h4>Приготовление:</h4>
+                <ol>
+                  <li>Нагрейте сковороду, обжарьте форель с обеих сторон</li>
+                  <li>Добавьте чеснок, влейте вино</li>
+                  <li>Тушите на среднем огне 5 минут</li>
+                  <li>Добавьте сливки, тушите еще 5 минут</li>
+                  <li>
+                    Посыпьте петрушкой и положите дольки лимона перед подачей
+                  </li>
+                </ol>
+              </div>
+
+              <div class="recipe-product">
+                <h4>Товар нашего магазина</h4>
+                <p>Форель свежая</p>
+                <div class="product-actions">
+                  <button class="add-to-cart-btn">
+                    <i class="fas fa-shopping-cart"></i> Добавить
+                  </button>
+                  <div class="counter-container" style="display: none">
+                    <button class="counter-btn minus-btn">-</button>
+                    <input
+                      type="number"
+                      class="quantity-input"
+                      value="1"
+                      min="1"
+                      max="99"
+                    />
+                    <button class="counter-btn plus-btn">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Рыбный Базар</h3>
+            <p>
+              Свежая рыба и морепродукты с доставкой на дом. Гарантия качества и
+              свежести!
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Контакты</h3>
+            <ul>
+              <li><i class="fas fa-map-marker-alt"></i> г.Барнаул</li>
+              <li><i class="fas fa-phone"></i> +7 (999) 123-45-67</li>
+              <li><i class="fas fa-envelope"></i> info@rybnybazar.ru</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2025 Рыбный Базар. Все права защищены.
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Обработчики событий для кнопок "Добавить в корзину" на странице рецептов
+        document.querySelectorAll(".add-to-cart-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const counterContainer = this.nextElementSibling;
+            const quantityInput =
+              counterContainer.querySelector(".quantity-input");
+            const productName = this.parentNode.querySelector("p").textContent; // Получаем название продукта
+            const productPrice = 500; // Заглушка для цены, в реальном коде это должно быть динамическое значение
+
+            // Показываем счетчик
+            this.style.display = "none";
+            counterContainer.style.display = "flex";
+
+            // Обновляем локальное хранилище
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const productIndex = cart.findIndex(
+              (item) => item.name === productName
+            );
+
+            if (productIndex !== -1) {
+              cart[productIndex].quantity += 1;
+            } else {
+              cart.push({
+                name: productName,
+                price: productPrice,
+                quantity: 1,
+              });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+
+            // Анимация кнопки
+            this.innerHTML = '<i class="fas fa-check"></i> Добавлено';
+            this.style.backgroundColor = "#4CAF50";
+
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-shopping-cart"></i> Добавить';
+              this.style.backgroundColor = "";
+            }, 1500);
+          });
+        });
+
+        // Функция для обновления количества товаров в корзине
+        function updateCartCount() {
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
+          let totalItems = 0;
+          cart.forEach((item) => {
+            totalItems += item.quantity;
+          });
+          document.querySelector(".cart-count").textContent = totalItems;
+        }
+
+        // Вызов функции при загрузке страницы для инициализации счетчика
+        updateCartCount();
+
+        // Обработчики событий для кнопок увеличения/уменьшения количества
+        document.querySelectorAll(".counter-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const input = this.parentNode.querySelector(".quantity-input");
+            const productName = input
+              .closest(".recipe-product")
+              .querySelector("p").textContent;
+
+            if (this.classList.contains("plus-btn")) {
+              input.value = parseInt(input.value) + 1;
+            } else if (this.classList.contains("minus-btn")) {
+              if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+              } else {
+                const addBtn =
+                  input.closest(".counter-container").previousElementSibling;
+                addBtn.style.display = "block";
+                input.closest(".counter-container").style.display = "none";
+              }
+            }
+
+            // Обновляем локальное хранилище
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const productIndex = cart.findIndex(
+              (item) => item.name === productName
+            );
+
+            if (productIndex !== -1) {
+              cart[productIndex].quantity = parseInt(input.value);
+              if (cart[productIndex].quantity === 0) {
+                cart.splice(productIndex, 1);
+              }
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
